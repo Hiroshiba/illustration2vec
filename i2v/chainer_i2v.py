@@ -18,6 +18,10 @@ class ChainerI2V(Illustration2VecBase):
         self.mean = mean
         self.use_gpu = False
 
+    def to_cpu(self):
+        self.net.to_cpu()
+        self.use_gpu = False
+
     def to_gpu(self):
         chainer.cuda.get_device_from_id(0).use()
         self.net.to_gpu()
